@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Health App
+ 
+## The next step for healthcare.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Health APP is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare. 
 
-In the project directory, you can run:
+<b>This APP has no intention to be comercialized. </b>
 
-### `npm start`
+Healthcare has become one of the most important problems of our society, and one way to resolve it is by making things cheap.
+In order to do that, we need to start implementing what has been called by me <i>Home Testing</i> and <i>HealthDataCare</i>.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The concept is simple: instead of making people pay (when they can) and wait in a long line for exams, we make tests at home. <u>Cheap and effective</u> tests. Current there is a few applications that HealthCare already can take benefits from. They are called
+<b>Simple Daily Data:</b>
+ - Those are the data that can already be taken from home. For example: Weight Measures, Blood Pressure, Heart Rate, etc.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+But we can go further and enable a new class of exams: <b>Cancer Exams</b>. This is a sensitive topic, but it has a lot of potential.
+Imagine if you can make a quick and simple test at home and know in a couple minutes the likelihood that you have cancer.
+This is already possible with at least two types: <i>Skin Cancer and Breast Cancer</i>.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Skin cancer
+------
+The way to do it is pretty simple, and it is implemented with this app. You just take a picture, fill some informations
+about the image (your age, sex, location of the photo taken) and we have about 92% of precision in less than a minute.
+There are ways to improve this results, if you use a dermatology photo (one way implemented by the Health DedsBot is by having a microscopic.
 
-### `npm run build`
+## Breast cancer
+------
+This is a little more tricky. The software is done, and it works similarly to the Skin Cancer. You simply present the image to the model
+and it does the inference. But the best way of taking "picture" is with a ultrassonic transducer, which are (currently) too expensive.
+What we need to do is to redesign the ultrassonic transducer, making it more easy and reliable for common people to use, and be able to
+make the test at home.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## To Note
+------
+It is important to note that <b>this does not mean that you are not going to need a doctor</b>. This is just a <i>pre-test</i> that will need to be
+confirmed by a medical professional. The point here is not to replace Doctors, but instead <i>help</i> them providing <u>more data</u>, and
+making easier for common people to have diagnostics faster and cheaper.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+While in that note, talking about sharing data to doctors, this is the other pillar that this app is based on. Its time that the pacient
+has control over their entire Medical History, since the day he/she were born. No more retaking tests because they were made by another
+Private Hospital (obligating people to pay for another exam). If you have the data, the doctor can make the diagnose better and more
+precisely (imagine two scenarios: pacient A comes to doctor not feeling good for a few days, and pacient B who is suffering the same
+syntoms, but has their Medical History available and Daily/Weekly data of their Health Status. The doctor can then study those informations
+and make a more conscious decision with the last pacient).

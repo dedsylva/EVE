@@ -1,0 +1,6 @@
+node_modules/
+coverage/
+logfile.log
+__pycache__
+.python-version
+imagestesting.jpg

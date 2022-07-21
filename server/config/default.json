@@ -1,0 +1,4 @@
+{
+	"dedsPrivateKey": "healthapp_dedsPrivateKey",
+  "db": "mongodb://localhost/healthapp"
+}
