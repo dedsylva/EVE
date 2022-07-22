@@ -3,7 +3,7 @@ import { View, Text, FlatList} from 'react-native';
 const axios = require('axios');
 import { HOST } from '../../constants';
 import dashStyle, { dashColors } from '../../styles/dash';
-import {Icon as Material} from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const ListDashPills = ({pills, setPills}) => {
@@ -25,7 +25,7 @@ const ListDashPills = ({pills, setPills}) => {
           <View style={dashStyle.pillContainer}>
             {/* <Text style={dashStyle.items}> {item.name} - Take {item.quantityPerPeriod} per {item.Peiod}  </Text>  */}
             <View style={{flex: 1, marginLeft: 50}}>
-              <Material name="pill" size={24} color={'black'} />
+              <MaterialCommunityIcons name="pill" size={24} color={'black'} />
             </View>
 
             <View style={{flex: 2}}>

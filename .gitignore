@@ -3,3 +3,4 @@ notes.*
 *.png
 server/utils/best_model.h5
 client/constants.js
+.vscode/

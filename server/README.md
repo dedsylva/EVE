@@ -1,4 +1,4 @@
-# Health App - Backend 
+# EVA - Backend 
 
 ## Features
 APIS for receiving/delivering requests from frontend. Currently we have two kinds:

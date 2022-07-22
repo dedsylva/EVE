@@ -19,16 +19,6 @@ import { check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 const NN = ({ navigation }) => {
 
   const baseURL= `http://${HOST}:3000`;
-  const test = async () => {
-    const res = await axios.get(`${baseURL}/api/weights`);
-    return res
-  };
-
-  useEffect (() => {
-    const res = test();
-    console.log(res);
-  });
-
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
   const [capturedImage, setCapturedImage] = useState(null);
@@ -48,6 +38,7 @@ const NN = ({ navigation }) => {
   const [location, setLocation] = useState(null);
 
   const [showResults, setShowResults] = useState(false);
+
 
   const allLocations= [
     {name: 'abdomen',      key: '1'},
@@ -197,13 +188,20 @@ const NN = ({ navigation }) => {
 
 
   useEffect(() => {
-    request(PERMISSIONS.ANDROID.CAMERA).then((result)=> {console.log("Camera Permission: ",result); checkStatus(PERMISSIONS.ANDROID.CAMERA)});
-    request(PERMISSIONS.ANDROID.RECORD_AUDIO).then((result)=> {console.log("Record Audio Permission: ",result); checkStatus(PERMISSIONS.ANDROID.RECORD_AUDIO)});
+    async function getPermission() {
+      try {
+        const cameraPermission = await request(PERMISSIONS.ANDROID.CAMERA);
+        console.log("Camera Permission: ",cameraPermission); 
 
-    if (checkStatus(PERMISSIONS.ANDROID.CAMERA) === 'granted') {
-      setHasPermission('granted');
+        if (cameraPermission === 'granted') {
+          setHasPermission('granted');
+        }
+      } catch(err) {
+        console.log(err);
+      }
+
     }
-
+    getPermission();
   }, []);
 
   if (hasPermission === null) {
@@ -213,8 +211,9 @@ const NN = ({ navigation }) => {
     return <Text>No access to camera</Text>;
   }
 
+
   const handleSave = async(photo) => {
-    const { status } = await Camera.requestCameraPermissionsAsync();
+    const { status } = await RNCamera.requestCameraPermissionsAsync();
     if (status === "granted"){
       const assert = await MediaLibrary.createAssetAsync(photo);
       MediaLibrary.createAlbumAsync('Tutorial', assert);
@@ -279,6 +278,23 @@ const NN = ({ navigation }) => {
     // }
     
   }
+
+  const takePicture = async (camera) => {
+    const options = { quality: 1, base64: true };
+    try {
+      const data = await camera.takePictureAsync(options);
+
+      setCapturedImage(data.uri);
+      setModalCamera(true);
+      //handleSave(data.uri);
+      setPhotoUri(data.uri);
+
+    } catch(err){
+      console.log(err);
+    }
+  };
+
+
 
   return (
     <View style={dashStyle.nnContainer}>
@@ -348,44 +364,43 @@ const NN = ({ navigation }) => {
 
         <View style={{flex: 2}}>
 
-          <RNCamera
-            type={RNCamera.Constants.Type.back}
-            flashMode={RNCamera.Constants.FlashMode.on}
-          >      
+            <RNCamera
+              style={styles.cameraStyle}
+              type={type}
+              flashMode={RNCamera.Constants.FlashMode.on}
+            >      
 
-            {({ camera }) => {
-                return (
+              {({ camera }) => {
+                  return (
 
-            <View style={{display: "flex", flexDirection: "row"}}>
+                <View style={{display: "flex", flexDirection: "row", paddingTop: 585,}}>
+                  <View style={{flex: 1}}>
+                    <TouchableOpacity
+                      style={styles.nnButton}
+                      onPress={() => {
+                        setType(
+                          type === RNCamera.Constants.Type.back
+                            ? RNCamera.Constants.Type.front
+                            : RNCamera.Constants.Type.back
+                        );
+                      }}>
+                      <Text style={styles.nnText}> Flip </Text>
+                    </TouchableOpacity>
+                  </View>
 
-              <View style={{flex: 1}}>
-                <TouchableOpacity
-                  style={styles.nnButton}
-                  onPress={() => {
-                    setType(
-                      type === RNCamera.Constants.Type.back
-                        ? RNCamera.Constants.Type.front
-                        : RNCamera.Constants.Type.back
-                    );
-                  }}>
-                  <Text style={styles.nnText}> Flip </Text>
-                </TouchableOpacity>
-              </View>
+                  <View style={{flex: 1}}>
+                    <TouchableOpacity
+                      style={styles.nnButton}
+                      onPress={() => takePicture(camera)}>
+                      <Text style={styles.nnText}> Take picture</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
 
-              <View style={{flex: 1}}>
-                <TouchableOpacity
-                  style={styles.nnButton}
-                  onPress={takePicture(camera)}>
-                  <Text style={styles.nnText}> Take picture</Text>
-                </TouchableOpacity>
-              </View>
+                  );
+              }}
 
-            </View>
-
-                );
-            }}
-
-          </RNCamera>
+            </RNCamera>
 
           {/* Modal for choosing camera or microcospic*/}
             <Modal animationType="slide"

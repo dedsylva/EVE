@@ -5,10 +5,10 @@ import about from "../styles/aboutStyles";
 export default function Daily () {
   return (
     <View style={about.aboutContainer}>
-      <Text style={about.aboutSubTitle}>Health APP</Text>
+      <Text style={about.aboutSubTitle}>EVA</Text>
 
       <ScrollView>
-        <Text style={about.aboutNormalText}>Health APP is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare.</Text>
+        <Text style={about.aboutNormalText}>EVA is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare.</Text>
         <Text style={about.aboutBoldText}> This APP has no intention to be comercialized.</Text>
         <Text style={about.aboutNormalText}> Healthcare has become one of the most important problems of our society, and one way to resolve it is by making things cheap.</Text>
         <Text style={about.aboutNormalText}>In order to do that, we need to start implementing what has been called "Home Testing" and "HealthDataCare".</Text>
@@ -23,7 +23,7 @@ export default function Daily () {
         <Text style={about.aboutNormalText}>    - The way to do it is pretty simple, and it is implemented with this app. You just take a picture, fill some informations</Text>
         <Text style={about.aboutNormalText}>about the image (your age, sex, location of the photo taken) and we have about 92% of precision in less than a minute.</Text>
         <Text style={about.aboutNormalText}>There are ways to improve this results, if you use a dermatology photo </Text>
-        <Text style={about.aboutNormalText}>(one way implemented by the Health DedsBot is by having a microscopic).</Text>
+        <Text style={about.aboutNormalText}>(one way implemented is having a microscopic).</Text>
         <Text style={about.aboutBoldText}>Breast Cancer</Text>
         <Text style={about.aboutNormalText}>    - This is a little more tricky. The software is done, and it works similarly to the Skin Cancer.</Text>
         <Text style={about.aboutNormalText}>You simply present the image to the model and it does the inference.</Text>
@@ -43,7 +43,7 @@ export default function Daily () {
         <Text style={about.aboutNormalText}>The doctor can then study those informations and make a more conscious decision with the last pacient).</Text>
 
 
-        <Text style={about.aboutFinalNote}>Note: This app has functionalities that are fullfilled with the Health DedsBot. </Text>
+        <Text style={about.aboutFinalNote}>Note: This app has functionalities that are fullfilled with EVA robot. </Text>
       </ScrollView>
 
 

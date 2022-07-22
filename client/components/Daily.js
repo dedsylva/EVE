@@ -1,6 +1,6 @@
 import React , {useState, useEffect} from 'react';
 import { Text, View, TouchableOpacity, Modal, ActivityIndicator} from "react-native";
-// import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 import dashStyle, {dashColors} from "../styles/dash";
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -376,7 +376,7 @@ const Daily = ({ navigation }) => {
               <Text style={dashStyle.graphTitle}> Weight</Text>
               <VictoryChart 
               theme={graphTheme}
-              height={200}
+              height={190}
               width={550}
               minDomain={{y: 80}}
               >
@@ -440,7 +440,7 @@ const Daily = ({ navigation }) => {
               <Text style={dashStyle.graphTitle}> Blood Pressure </Text>
               <VictoryChart 
               theme={graphTheme}
-              height={210}
+              height={190}
               width={550}
               minDomain={{y: 40}}
               maxDomain={{y: 130}}
@@ -550,18 +550,20 @@ const Daily = ({ navigation }) => {
                       Please step on the Weight Scale 
                     </Text>
 
-                    {/* <Video 
-                      style={{marginLeft: 100, width: 600, height: 450, }}
-                      source={require("../assets/animation_scale.mp4")}
-                      repeat="true"
-                      useNativeControls
-                      resizeMode="contain"
-                      isLooping
-                      shouldPlay={true}
-                    /> */}
+
+                    <VideoPlayer
+                      style={{marginLeft: 100, width: 600, height: 450,marginBottom: 10, }}
+                      video={require("../assets/animation_scale.mp4")}
+                      videoWidth={100}
+                      videoHeight={100}
+                      autoplay={true}
+                      loop={true}
+                      showDuration={false}
+                      pauseOnPress={true}
+                      />
 
 
-                    <View style={{display: 'flex', flexDirection: 'row'}}>
+                    <View style={{display: 'flex', flexDirection: 'row', marginTop: 10,}}>
 
                       <View style={{flex: 1, alignItems: 'center',}}>
                         <TouchableOpacity onPress={handleWeight}>
@@ -639,17 +641,21 @@ const Daily = ({ navigation }) => {
                       Please put the Blood Monitor on your wrist and press START
                     </Text>
 
-                    {/* <Video 
-                      style={{marginLeft: 100, width: 600, height: 450, }}
-                      source={require("../assets/animation_bp_monitor.mp4")}
-                      useNativeControls
-                      resizeMode="contain"
-                      isLooping
-                      shouldPlay={true}
-                    /> */}
+                    <VideoPlayer
+                      style={{marginLeft: 100, width: 600, height: 450,marginBottom: 10, }}
+                      video={require("../assets/animation_bp_monitor.mp4")}
+                      videoWidth={100}
+                      videoHeight={100}
+                      autoplay={true}
+                      loop={true}
+                      showDuration={false}
+                      pauseOnPress={true}
+                      />
 
 
-                    <View style={{display: 'flex', flexDirection: 'row'}}>
+
+
+                    <View style={{display: 'flex', flexDirection: 'row', marginTop: 10,}}>
 
                       <View style={{flex: 1, alignItems: 'center',}}>
                         <TouchableOpacity onPress={handleBP}>

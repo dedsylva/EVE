@@ -1,9 +1,9 @@
-# Health App
+# Eva
  
 ## The next step for healthcare.
 
 
-Health APP is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare. 
+Eva is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare. 
 
 <b>This APP has no intention to be comercialized. </b>
 
@@ -23,7 +23,7 @@ This is already possible with at least two types: <i>Skin Cancer and Breast Canc
 ------
 The way to do it is pretty simple, and it is implemented with this app. You just take a picture, fill some informations
 about the image (your age, sex, location of the photo taken) and we have about 92% of precision in less than a minute.
-There are ways to improve this results, if you use a dermatology photo (one way implemented by the Health DedsBot is by having a microscopic.
+There are ways to improve this results, if you use a dermatology photo (one way implemented is having a microscopic.
 
 ## Breast cancer
 ------
