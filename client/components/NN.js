@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, FlatList, Text, View, Image, TouchableOpacity, Modal, TextInput } from 'react-native';
+import { Button, FlatList, Text, View, Image, TouchableOpacity, Modal, TextInput, PermissionsAndroid } from 'react-native';
 import dashStyle, {dashColors} from "../styles/dash";
 import { RNCamera } from 'react-native-camera';
 import Ionicons from  'react-native-vector-icons/Ionicons';
@@ -13,7 +13,8 @@ const axios = require('axios');
 import { HOST } from '../constants';
 import Alert from '../shared/Alert';
 import { check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
-// import OpenApplication from 'react-native-open-application';
+import  {openOTG}  from '../UsbModule';
+import RNFetchBlob from 'rn-fetch-blob';
 
 
 const NN = ({ navigation }) => {
@@ -22,7 +23,7 @@ const NN = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(RNCamera.Constants.Type.back);
   const [capturedImage, setCapturedImage] = useState(null);
-  const [modalCamera, setModalCamera] = useState(null);
+  const [modalCamera, setModalCamera] = useState(false);
   const [openDetails, setOpenDetails] = useState(null);
   const [photoUri, setPhotoUri] = useState(null);
   const [classData, setClassData] = useState();
@@ -193,6 +194,16 @@ const NN = ({ navigation }) => {
         const cameraPermission = await request(PERMISSIONS.ANDROID.CAMERA);
         console.log("Camera Permission: ",cameraPermission); 
 
+        const storagePermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE);
+        console.log("Storage Permission: ", storagePermission);
+
+        // const readPermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE);
+        // console.log("Read Permission: ", readPermission);
+
+        // const managePermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.MANAGE_EXTERNAL_STORAGE);
+        // console.log("Manage Permission: ", managePermission);
+
+
         if (cameraPermission === 'granted') {
           setHasPermission('granted');
         }
@@ -270,14 +281,24 @@ const NN = ({ navigation }) => {
   }
 
   const openOTGView = async () => {
-    // try {
-    //   await OpenApplication.openOTG((a) => {console.log(a)});
-    // } catch (err) {
-    //   console.log('AAAAAAAAAAAAAAAAAAAA');
-    //   console.log(err);
-    // }
-    
-  }
+    setChoose(false); 
+    try {
+      await openOTG((a) => {console.log('Opening OTG was a: ', a)});
+
+      const path = '/storage/emulated/0/DCIM/OTG View2/photo/';
+      let uri = await RNFetchBlob.fs.ls(path);
+      setCapturedImage('file://' + path + uri[0]);
+
+      if (uri[0] === undefined || uri[0] === null || capturedImage === null) {
+        uri = await RNFetchBlob.fs.ls(path);
+        setCapturedImage('file://' + path + uri[0]);
+      }
+      console.log('aaaaa', capturedImage);
+      setModalCamera(true);
+    } catch (err) {
+      console.log(err);
+    }
+}
 
   const takePicture = async (camera) => {
     const options = { quality: 1, base64: true };
@@ -288,6 +309,7 @@ const NN = ({ navigation }) => {
       setModalCamera(true);
       //handleSave(data.uri);
       setPhotoUri(data.uri);
+      console.log('GOTCHYA ', data.uri);
 
     } catch(err){
       console.log(err);
@@ -372,30 +394,31 @@ const NN = ({ navigation }) => {
 
               {({ camera }) => {
                   return (
+                
+                  <View style={{display: "flex", flexDirection: "row", paddingTop: 585,}}>
+                    <View style={{flex: 1}}>
+                      <TouchableOpacity
+                        style={styles.nnButton}
+                        onPress={() => {
+                          setType(
+                            type === RNCamera.Constants.Type.back
+                              ? RNCamera.Constants.Type.front
+                              : RNCamera.Constants.Type.back
+                          );
+                        }}>
+                        <Text style={styles.nnText}> Flip </Text>
+                      </TouchableOpacity>
+                    </View>
 
-                <View style={{display: "flex", flexDirection: "row", paddingTop: 585,}}>
-                  <View style={{flex: 1}}>
-                    <TouchableOpacity
-                      style={styles.nnButton}
-                      onPress={() => {
-                        setType(
-                          type === RNCamera.Constants.Type.back
-                            ? RNCamera.Constants.Type.front
-                            : RNCamera.Constants.Type.back
-                        );
-                      }}>
-                      <Text style={styles.nnText}> Flip </Text>
-                    </TouchableOpacity>
+                    <View style={{flex: 1}}>
+                      <TouchableOpacity
+                        style={styles.nnButton}
+                        onPress={() => takePicture(camera)}>
+                        <Text style={styles.nnText}> Take picture</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
-
-                  <View style={{flex: 1}}>
-                    <TouchableOpacity
-                      style={styles.nnButton}
-                      onPress={() => takePicture(camera)}>
-                      <Text style={styles.nnText}> Take picture</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+                
 
                   );
               }}
@@ -413,7 +436,7 @@ const NN = ({ navigation }) => {
                 <View style={{flexDirection: 'row', marginTop: 50}}>
 
                   <View style={{flex: 1}}>
-                    <TouchableOpacity onPress = { () => {setChoose(false); setModalCamera(true)}} style={styles.chooseButton}>
+                    <TouchableOpacity onPress = { () => {setChoose(false)}} style={styles.chooseButton}>
                       <Text style={styles.optionsText}>Camera</Text>
                     </TouchableOpacity>
                   </View>
@@ -446,7 +469,7 @@ const NN = ({ navigation }) => {
 
                   <View style={{flexDirection: 'row'}}>
                     <View style={{flex: 1}}>
-                      <TouchableOpacity onPress = { () => setModalCamera(false)} style={styles.chooseButton}>
+                      <TouchableOpacity onPress = { () => {setModalCamera(false); setChoose(true); }} style={styles.chooseButton}>
                         <Text style={styles.optionsText}>Take Other Picture</Text>
                       </TouchableOpacity>
                     </View>

@@ -95,15 +95,15 @@ def heart():
   dat = dict() 
   NUMBER_OF_TRIES = 20
 
-  # Timing for people get in to the scale
+  # Timing for people start the blood pressure monitor 
   time.sleep(10)
 
-  return {
-  "Diastolic": "68.0 mmHg",
-  "Pulse": "88.0 bpm",
-  "Systolic": "97.0 mmHg",
-  "Time": "18:3:23",
-}
+#   return {
+#   "Diastolic": "68.0 mmHg",
+#   "Pulse": "88.0 bpm",
+#   "Systolic": "97.0 mmHg",
+#   "Time": "18:3:23",
+# }
 
   for _ in range(NUMBER_OF_TRIES):
 
@@ -135,8 +135,8 @@ def weight():
   dat = dict() 
   NUMBER_OF_TRIES = 8
 
-  # Timing for people start the blood pressure monitor 
-  time.sleep(3)
+  # Timing for people get in to the scale
+  # time.sleep(3)
 
   for _ in range(NUMBER_OF_TRIES):
 

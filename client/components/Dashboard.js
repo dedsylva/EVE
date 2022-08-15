@@ -32,6 +32,7 @@ const Dashboard = ({ navigation }) => {
     // Only getting the last 30 days for Dashboard
     const lastMonth = new Date(new Date().setDate(new Date().getDate() - 30));
     const interval = Math.abs(new Date() - lastMonth); // interval between today and last 30 days;
+    console.log('lastMonth', lastMonth);
 
     data = data.filter((a) => { return Math.abs(new Date(a.heartDate) - lastMonth) < interval }); 
 

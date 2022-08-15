@@ -81,7 +81,7 @@ class HeartMonitorAPI:
 class WeightAPI:
   def __init__(self):
     #self.SCALE_ADDRESS = "EC:21:E5:12:24:D0"
-    self.SCALE_ADDRESS = "0C:95:41:D3:F0:A8" 
+    self.SCALE_ADDRESS = "0C:95:41:7F:13:C3"
     self.w_found= False
     self.dat = dict() 
 
@@ -113,6 +113,8 @@ class WeightAPI:
     self.w_found = True
     self.dat = json.dumps({"Weight": str(weight)+" kg"}) 
 
+    return
+
   async def run(self):
     print('*** STARTING SCAN ***')
 
@@ -132,26 +134,32 @@ class WeightAPI:
         paired = await client.pair()
         print(f"Paired: {paired}")
         assert paired
+        i = 0
+        n_tries = 5
 
-        try:
-          # 00002902-0000-1000-8000-00805f9b34fb (Handle: 30) (XIAOMI)
-          data = (512).to_bytes(2, byteorder='big')
-          await client.write_gatt_descriptor(30, data)
+        while i < n_tries:
+          try:
+            # 00002902-0000-1000-8000-00805f9b34fb (Handle: 30) (XIAOMI)
+            data = (512).to_bytes(2, byteorder='big')
+            await client.write_gatt_descriptor(30, data)
 
 
-          await client.start_notify(GattChar["Body Composition Measurement"], self.w_callback)
+            await client.start_notify(GattChar["Body Composition Measurement"], self.w_callback)
 
-          time.sleep(5)
+            time.sleep(1)
 
-          unpaired = await client.unpair()
-          print(f"Unpaired: {unpaired}")
-          assert unpaired
 
-        except Exception as e:
-          print('ERROR', e)
+          except Exception as e:
+            print('ERROR', e)
 
-          unpaired = await client.unpair()
-          print(f"Unpaired: {unpaired}")
+            unpaired = await client.unpair()
+            print(f"Unpaired: {unpaired}")
+          
+          i += 1
+
+        unpaired = await client.unpair()
+        print(f"Unpaired: {unpaired}")
+        assert unpaired
 
     else:
       print('SCALE         NOT in devices')
