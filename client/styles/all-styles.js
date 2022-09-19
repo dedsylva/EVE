@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { dashColors } from "./dash";
 
 export const BACKGROUND = '#F0F0EC';
+export const HOME_BACKGROUND = '#6B737D';
 export const BLUE_BACKGROUND = '#D0E5EC';
 export const RED_INFERENCE = '#D71C1C'; 
 
@@ -477,6 +478,38 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
+  homeContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: HOME_BACKGROUND,
+    marginTop: 20
+  },
+  homeOptions: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 45,
+    color: "black",
+  },
+  homeButton: {
+    backgroundColor: DARK_PURPLE,
+    justifyContent: 'center',
+    height: 70,
+    width: 350,
+    borderRadius: 80,
+    marginLeft: 100,
+  },
+  homeText: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 45,
+    color: "white",
+  },
+  homeSpecialText: {
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: 45,
+    color: "white",
+  },  
 });
 
 

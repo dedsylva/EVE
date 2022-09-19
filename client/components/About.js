@@ -1,13 +1,18 @@
 import React from "react";
-import { Text, View, Button, ScrollView } from "react-native";
+import { Text, View, Button, ScrollView, Image } from "react-native";
 import about from "../styles/aboutStyles";
 
 export default function Daily () {
   return (
     <View style={about.aboutContainer}>
-      <Text style={about.aboutSubTitle}>EVA</Text>
 
       <ScrollView>
+
+        <View style={{display: 'flex', flexDirection: 'column', height: 300, marginTop: 20,}}>
+          <Image style={{flex: 2, alignSelf: 'center', height: 300, borderRadius: 100,}} source={require("../assets/logo.png")}></Image>
+          <Text style={about.aboutSubTitle}>EVA</Text>
+        </View>
+
         <Text style={about.aboutNormalText}>EVA is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare.</Text>
         <Text style={about.aboutBoldText}> This APP has no intention to be comercialized.</Text>
         <Text style={about.aboutNormalText}> Healthcare has become one of the most important problems of our society, and one way to resolve it is by making things cheap.</Text>
@@ -42,14 +47,8 @@ export default function Daily () {
         <Text style={about.aboutNormalText}>suffering the same syntoms, but has their Medical History available and Daily/Weekly data of their Health Status. </Text>
         <Text style={about.aboutNormalText}>The doctor can then study those informations and make a more conscious decision with the last pacient).</Text>
 
-
         <Text style={about.aboutFinalNote}>Note: This app has functionalities that are fullfilled with EVA robot. </Text>
       </ScrollView>
-
-
-
-
-
 
 
     </View>

@@ -14,6 +14,7 @@ const about = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     color: aboutColors.darkPurple,
+    flex: 1,
   },
   aboutNormalText: {
     paddingTop: 20,

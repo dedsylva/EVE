@@ -82,6 +82,7 @@ const Dashboard = ({ navigation }) => {
 
 
         setBloodData(newBloodData);
+        console.log('blood: ', newBloodData);
 
         for (let i = 0; i< res.data.length; i++) {
           // YYYY-MM-DD
