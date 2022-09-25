@@ -10,10 +10,10 @@ export default function Daily () {
 
         <View style={{display: 'flex', flexDirection: 'column', height: 300, marginTop: 20,}}>
           <Image style={{flex: 2, alignSelf: 'center', height: 300, borderRadius: 100,}} source={require("../assets/logo.png")}></Image>
-          <Text style={about.aboutSubTitle}>EVA</Text>
+          <Text style={about.aboutSubTitle}>EVE</Text>
         </View>
 
-        <Text style={about.aboutNormalText}>EVA is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare.</Text>
+        <Text style={about.aboutNormalText}>EVE is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare.</Text>
         <Text style={about.aboutBoldText}> This APP has no intention to be comercialized.</Text>
         <Text style={about.aboutNormalText}> Healthcare has become one of the most important problems of our society, and one way to resolve it is by making things cheap.</Text>
         <Text style={about.aboutNormalText}>In order to do that, we need to start implementing what has been called "Home Testing" and "HealthDataCare".</Text>
@@ -47,7 +47,7 @@ export default function Daily () {
         <Text style={about.aboutNormalText}>suffering the same syntoms, but has their Medical History available and Daily/Weekly data of their Health Status. </Text>
         <Text style={about.aboutNormalText}>The doctor can then study those informations and make a more conscious decision with the last pacient).</Text>
 
-        <Text style={about.aboutFinalNote}>Note: This app has functionalities that are fullfilled with EVA robot. </Text>
+        <Text style={about.aboutFinalNote}>Note: This app has functionalities that are fullfilled with EVE robot. </Text>
       </ScrollView>
 
 

@@ -1,4 +1,4 @@
-package com.eva;
+package com.eve;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;

@@ -1,4 +1,4 @@
-package com.eva;
+package com.eve;
 
 
 import com.facebook.react.ReactActivity;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "eva";
+    return "eve";
   }
 
   /**
