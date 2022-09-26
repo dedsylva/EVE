@@ -1,4 +1,4 @@
-# EVA - Backend 
+# EVE - Backend 
 
 ## Features
 APIS for receiving/delivering requests from frontend. Currently we have two kinds:
@@ -11,7 +11,6 @@ APIS for receiving/delivering requests from frontend. Currently we have two kind
 
 * Python APIS
   - Skin Cancer Exam
-  - Skin Diseases Exam
 
 
 ## App 1.0 - TODO
@@ -19,4 +18,4 @@ APIS for receiving/delivering requests from frontend. Currently we have two kind
 
 
 ## App 2.0 - TODO
-* Add Message Queue System for Handling Large Number of Requests
+* Add Voice Support

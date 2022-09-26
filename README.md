@@ -1,9 +1,9 @@
-# Eva
+# EVE
  
 ## The next step for healthcare.
 
 
-Eva is an App designed by Tadeu, with the intention of showing the possibiilities of current technology towards HealthCare. 
+EVE is an App designed by Dedsylva, with the intention of showing the possibiilities of current technology towards HealthCare. 
 
 <b>This APP has no intention to be comercialized. </b>
 
