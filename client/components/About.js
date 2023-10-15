@@ -9,7 +9,7 @@ export default function Daily () {
       <ScrollView>
 
         <View style={{display: 'flex', flexDirection: 'column', height: 300, marginTop: 20,}}>
-          <Image style={{flex: 2, alignSelf: 'center', height: 300, borderRadius: 100,}} source={require("../assets/logo.png")}></Image>
+          <Image style={{flex: 2, alignSelf: 'center', height: 300, borderRadius: 100,}} source={require("../assets/logo.jpeg")}></Image>
           <Text style={about.aboutSubTitle}>EVE</Text>
         </View>
 
