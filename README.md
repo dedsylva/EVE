@@ -2,6 +2,10 @@
  
 ## The next step for healthcare.
 
+<p align="center">
+  <img width="80%" height="80%" src="assets/logo.png">
+</p>
+
 
 EVE is an App designed by Dedsylva, with the intention of showing the possibiilities of current technology towards HealthCare. 
 

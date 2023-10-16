@@ -12,3 +12,4 @@
 # installl Android Studio at https://developer.android.com/studio
 # adb -s R9XR2000B2J reverse tcp:8081 tcp:8081
 ANDROID_SDK_ROOT=/home/taylor/Android/Sdk npm run android
+npm start

@@ -1,8 +1,14 @@
 import { StyleSheet } from "react-native";
 import { dashColors } from "./dash";
 
-export const BACKGROUND = '#F0F0EC';
-export const HOME_BACKGROUND = '#6B737D';
+export const CORAL_PINK = '#FF6B6B'; 
+export const SKY_BLUE = '#4ECDC4'; 
+export const FRESH_GREEN = '#81C784'; 
+export const GLISTENING_GOLD = '#FFD54F'; 
+export const SOFT_WHITE = '#FDFDFA'; 
+
+export const BACKGROUND = '#FFFFFF'; 
+export const HOME_BACKGROUND = '#FFFFFF';
 export const BLUE_BACKGROUND = '#D0E5EC';
 export const RED_INFERENCE = '#D71C1C'; 
 

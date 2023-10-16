@@ -8,7 +8,7 @@ export default function Home ({ navigation }) {
     
     <View style={styles.homeContainer}>
       <Text style={styles.homeText}>EVE</Text>
-      <Image style={{flex: 2, alignSelf: 'center', height: '30%', borderRadius: 90, width: '40%', marginTop: 50,}} source={require("../assets/logo.jpeg")}></Image>
+      <Image style={{flex: 2, alignSelf: 'center', height: '30%', borderRadius: 90, width: '40%', marginTop: 50,}} source={require("../assets/logo.png")}></Image>
 
       <View style={{marginTop: 20, flexDirection: 'row', marginLeft: 50, marginBottom: 10, display: 'flex', flexDirection: 'row'}}>
 
