@@ -3,7 +3,7 @@
 ## The next step for healthcare.
 
 <p align="center">
-  <img width="80%" height="80%" src="assets/logo.png">
+  <img width="80%" height="80%" src="client/assets/logo.png">
 </p>
 
 
